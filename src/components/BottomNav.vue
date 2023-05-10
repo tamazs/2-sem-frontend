@@ -5,8 +5,33 @@
                 <img src="../assets/icon-eye.svg" alt="Eye icon">
                 <h3 class="bottom-nav-tooltip">
                     <span class="tooltip-arrow"></span>
-                    Members of project
+                    See projects
                 </h3>
+            </li>
+            <li style="bottom: 2rem;">
+                <img src="../assets/icon-about.svg" style="height: 5rem;" alt="About icon">
+                <h3 class="bottom-nav-tooltip">
+                    <span class="tooltip-arrow"></span>
+                    See members of project
+                </h3>
+            </li>
+            <li>
+                <a href="https://www.netflix.com/" target="_blank">
+                    <img src="../assets/icon-web.svg" alt="Web icon">
+                    <h3 class="bottom-nav-tooltip">
+                        <span class="tooltip-arrow"></span>
+                        Go have fun, you deserve it.
+                    </h3>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.youtube.com/watch?v=k4V3Mo61fJM" target="_blank">
+                    <img src="../assets/icon-hole.svg" alt="Hole icon">
+                    <h3 class="bottom-nav-tooltip">
+                        <span class="tooltip-arrow"></span>
+                        Only click when sad because of project
+                    </h3>
+                </a>
             </li>
             <li>
                 <img src="../assets/icon-settings.svg" alt="Settings icon">
@@ -56,6 +81,7 @@ ul {
     transform: translateX(2rem);
     display: flex;
     justify-content: center;
+    align-items: flex-end;
 }
 
 li {
@@ -64,9 +90,9 @@ li {
     width: 7rem;
     padding: 0.2rem;
     list-style: none;
-    bottom: 2rem;
-    margin-right: 2rem;
-    margin-left: 2rem;
+    bottom: 1rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
 }
 
 .bottom-nav-tooltip {
@@ -74,8 +100,8 @@ li {
     position: absolute;
     width: 100%;
     width: max-content;
-    bottom: 9rem;
-    left: 50%;
+    bottom: 7rem;
+    left: 43%;
     padding: 0.3rem;
     font-size: 1rem;
     text-align: center;
@@ -100,5 +126,14 @@ li:hover .bottom-nav-tooltip {
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
     z-index: -1;
+}
+
+img {
+    height: 8rem;
+}
+
+a {
+    text-decoration: none;
+    color: black;
 }
 </style>

@@ -2,21 +2,21 @@
     <section class="mac-bar">
         <div class="mac-bar-left">
             <ul>
-                <li>Project 1</li>
-                <li>Account</li>
-                <li>Log out</li>
+                <li><b>Project 1</b></li>
             </ul>
         </div>
         <div class="mac-bar-right">
             <ul>
                 <li><img src="../assets/icon-battery-m.png" alt="Battery"></li>
-                <li>Wed 15:00</li>
+                <li>{{ moment().format('ddd MMM Do') }}</li>
+                <li>Log out</li>
             </ul>
         </div>
     </section>
 </template>
 
 <script setup>
+import moment from "moment";
 
 </script>
 
@@ -53,11 +53,7 @@ li {
 }
 
 .mac-bar-right li {
-    margin-left: 1rem;
-}
-
-.mac-bar-left li {
-    margin-right: 1rem;
+    margin-left: 2rem;
 }
 
 img {
