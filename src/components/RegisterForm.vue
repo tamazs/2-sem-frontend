@@ -5,7 +5,7 @@
         <input type="email" placeholder="Email">
         <input type="password" placeholder="Password">
         <button>Register</button>
-        <p>Already registered? Click here to log in!</p>
+        <p>Already registered? <RouterLink to="/login">Click here to log in!</RouterLink></p>
     </div>
 </template>
 
@@ -43,6 +43,9 @@ button {
 
 p {
     font-size: 0.8rem;
-    opacity: 0.5;
+}
+
+a {
+    color: #54B9AD;
 }
 </style>

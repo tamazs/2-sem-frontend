@@ -2,22 +2,22 @@
     <section class="top-nav">
         <ul>
             <li>
-                <div>
+                <RouterLink to="/task">
                     <img src="../assets/icon-folder.svg" alt="">
                     <h2>ToDo</h2>
-                </div>
+                </RouterLink>
             </li>
             <li>
-                <div>
+                <RouterLink to="/task">
                     <img src="../assets/icon-folder.svg" alt="">
                     <h2>Doing</h2>
-                </div>
+                </RouterLink>
             </li>
             <li>
-                <div>
+                <RouterLink to="/task">
                     <img src="../assets/icon-folder.svg" alt="">
                     <h2>Done</h2>
-                </div>
+                </RouterLink>
             </li>
         </ul>
     </section>
@@ -64,6 +64,11 @@ h2 {
     font-size: 1.2rem;
     font-weight: normal;
     text-align: center;
+}
+
+a {
+    color: black;
+    text-decoration: none;
 }
 
 </style>

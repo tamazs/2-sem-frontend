@@ -2,18 +2,22 @@
     <section class="bottom-nav">
         <ul>
             <li>
-                <img src="../assets/icon-eye.svg" alt="Eye icon">
-                <h3 class="bottom-nav-tooltip">
-                    <span class="tooltip-arrow"></span>
-                    See projects
-                </h3>
+                <RouterLink to="/">
+                    <img src="../assets/icon-eye.svg" alt="Eye icon">
+                    <h3 class="bottom-nav-tooltip">
+                        <span class="tooltip-arrow"></span>
+                        See projects
+                    </h3>
+                </RouterLink>
             </li>
             <li style="bottom: 2rem;">
-                <img src="../assets/icon-about.svg" style="height: 5rem;" alt="About icon">
-                <h3 class="bottom-nav-tooltip">
-                    <span class="tooltip-arrow"></span>
-                    See members of project
-                </h3>
+                <RouterLink to="/members">
+                    <img src="../assets/icon-about.svg" style="height: 5rem;" alt="About icon">
+                    <h3 class="bottom-nav-tooltip">
+                        <span class="tooltip-arrow"></span>
+                        See members of project
+                    </h3>
+                </RouterLink>
             </li>
             <li>
                 <a href="https://www.netflix.com/" target="_blank">
@@ -34,11 +38,13 @@
                 </a>
             </li>
             <li>
-                <img src="../assets/icon-settings.svg" alt="Settings icon">
-                <h3 class="bottom-nav-tooltip">
-                    <span class="tooltip-arrow"></span>
-                    Settings
-                </h3>
+                <RouterLink to="/settings">
+                    <img src="../assets/icon-settings.svg" alt="Settings icon">
+                    <h3 class="bottom-nav-tooltip">
+                        <span class="tooltip-arrow"></span>
+                        Settings
+                    </h3>
+                </RouterLink>
             </li>
             <li>
                 <img src="../assets/icon-bin.svg" alt="Bin icon">
