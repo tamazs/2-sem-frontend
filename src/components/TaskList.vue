@@ -1,12 +1,15 @@
 <template>
     <div class="list-body">
-        <h2>Projects</h2>
+        <div class="task-top">
+            <button><h2 class="close-btn">X</h2></button>
+            <h2 class="title">Tasks</h2>
+        </div>
         <div class="folder-body">
             <ul>
                 <li>
-                    <RouterLink to="/project">
+                    <RouterLink to="/task">
                         <img src="../assets/icon-folder.svg" alt="">
-                        <h3>Project 1</h3>
+                        <h3>Task 1</h3>
                     </RouterLink>
                 </li>
                 <li>
@@ -115,7 +118,7 @@
   background: #989893; 
 }
 
-h2 {
+.title {
     width: 40rem;
     height: max-content;
     background-color: #DADAD3;
@@ -133,10 +136,20 @@ ul {
     list-style: none;
 }
 
+li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h3 {
+    text-align: center;
+}
+
 .folder-body {
     width: 100%;
     height: 100%;
-    padding: 1rem;
+    padding: 1rem 1rem 1rem 0rem;
 }
 
 img {
@@ -146,5 +159,24 @@ img {
 a {
     text-decoration: none;
     color: black;
+}
+
+.close-btn {
+    margin: 0;
+    width: 2rem;
+    text-align: center;
+    padding: 0.2rem 0;
+    font-size: 1rem;
+}
+
+button {
+    position: fixed;
+    z-index: 4;
+    background-color: #DADAD3;
+    margin: 0;
+    width: 2rem;
+    height: max-content;
+    padding: 0;
+    width: max-content;
 }
 </style>

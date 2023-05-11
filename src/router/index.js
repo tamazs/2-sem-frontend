@@ -14,7 +14,7 @@ const router = createRouter({
       component: () => import('../views/ProjectList.vue')
     },
     {
-      path: '/tasklist',
+      path: '/tasks',
       name: 'tasklist',
       component: () => import('../views/TaskList.vue')
     },
@@ -42,11 +42,6 @@ const router = createRouter({
       path: '/settings',
       name: 'settings',
       component: () => import('../views/SettingsView.vue')
-    },
-    {
-      path: '/admin',
-      name: 'admin',
-      component: () => import('../views/admin/AdminView.vue')
     }
   ]
 })

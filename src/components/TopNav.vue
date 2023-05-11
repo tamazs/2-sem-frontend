@@ -2,19 +2,19 @@
     <section class="top-nav">
         <ul>
             <li>
-                <RouterLink to="/task">
+                <RouterLink to="/tasks">
                     <img src="../assets/icon-folder.svg" alt="">
                     <h2>ToDo</h2>
                 </RouterLink>
             </li>
             <li>
-                <RouterLink to="/task">
+                <RouterLink to="/tasks">
                     <img src="../assets/icon-folder.svg" alt="">
                     <h2>Doing</h2>
                 </RouterLink>
             </li>
             <li>
-                <RouterLink to="/task">
+                <RouterLink to="/tasks">
                     <img src="../assets/icon-folder.svg" alt="">
                     <h2>Done</h2>
                 </RouterLink>
