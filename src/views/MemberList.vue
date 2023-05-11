@@ -1,15 +1,15 @@
 <template>
     <header>
-        <MacBarSelect/>
+        <MacBar/>
     </header>
-    <div class="projectlist-body">
-        <ProjectList/>
+    <div class="memberlist-body">
+        <MemberList/>
     </div>
 </template>
 
 <script setup>
-import MacBarSelect from '../components/MacBarSelect.vue';
-import ProjectList from '../components/ProjectList.vue';
+import MacBar from '../components/MacBar.vue';
+import MemberList from '../components/MemberList.vue';
 
 
 </script>
@@ -21,7 +21,7 @@ header{
   z-index: 5;
   width: 100vw;
 }
-.projectlist-body {
+.memberlist-body {
     position: relative;
     background: #54B9AD;
     height: 100vh;
