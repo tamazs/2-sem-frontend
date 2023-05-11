@@ -1,16 +1,18 @@
 <template>
     <div class="register-form">
         <h2>Register</h2>
-        <input type="text" placeholder="Name">
-        <input type="email" placeholder="Email">
-        <input type="password" placeholder="Password">
-        <button>Register</button>
+        <input type="text" placeholder="Name" v-model="state.name">
+        <input type="email" placeholder="Email" v-model="state.email">
+        <input type="password" placeholder="Password" v-model="state.password">
+        <button @click="newUser()">Register</button>
         <p>Already registered? <RouterLink to="/login">Click here to log in!</RouterLink></p>
     </div>
 </template>
 
 <script setup>
+import user from '../modules/user';
 
+const { state, newUser} = user()
 </script>
 
 <style scoped>
