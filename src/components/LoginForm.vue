@@ -1,10 +1,12 @@
 <template>
     <div class="login-form">
-        <h2>Login</h2>
-        <input type="email" placeholder="Email">
-        <input type="password" placeholder="Password">
-        <button>Login</button>
-        <p>Not signed up yet? <RouterLink to="/register">Click here to sign up!</RouterLink></p>
+        <h2>Register</h2>
+        <div class="folder-body">
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Password">
+            <button @click="newUser()">Register</button>
+            <p>Already registered? <RouterLink to="/register">Click here to log in!</RouterLink></p>
+        </div>
     </div>
 </template>
 
@@ -14,30 +16,47 @@
 
 <style scoped>
 .login-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 1rem 4rem;
+    height: 40rem;
+    width: 40rem;
+    position: absolute;
     background-color: white;
-    border-radius: 1rem;
+    padding: 0;
+    border: 2px solid black;
 }
 
 input {
-    margin-bottom: 1rem;
-    width: 100%;
+    margin-bottom: 1.5rem;
+    width: 80%;
     height: 2rem;
-    border-radius: 0.3rem;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    border: 1px solid black;
 }
 
 button {
     background-color: #54B9AD;
     color: white;
-    border-radius: 1rem;
-    border: none;
     padding: 1rem 2rem;
-    margin-bottom: 0.5rem;
+    width: 30%;
+    border: 2px solid black;
+}
+
+h2 {
+    width: 40rem;
+    height: max-content;
+    background-color: #DADAD3;
+    text-align: center;
+    margin: 0;
+    padding: 0.3rem 0;
+    font-size: 1rem;
+    border-bottom: 2px solid black;
+    position: fixed;
+}
+
+.folder-body {
+    width: 100%;
+    height: 100%;
+    padding: 5rem 3rem;
+    display: flex;
+    flex-direction: column;
 }
 
 p {

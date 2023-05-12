@@ -88,7 +88,6 @@
     border: 2px solid black;
     overflow-y: scroll;
     overflow-x: hidden;
-    
 }
 
 ::-webkit-scrollbar {

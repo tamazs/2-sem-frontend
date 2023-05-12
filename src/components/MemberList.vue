@@ -7,7 +7,7 @@
         <div class="folder-body">
             <ul>
                 <li>
-                    <RouterLink to="/task">
+                    <RouterLink to="/member">
                         <img src="../assets/icon-about.svg" alt="">
                         <h3>Mr Bean</h3>
                     </RouterLink>

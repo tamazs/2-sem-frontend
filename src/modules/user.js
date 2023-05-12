@@ -23,7 +23,7 @@ const getUser = () => {
                 password: state.value.password
             })
         }
-        fetch("http://localhost:4000/api/user/register/new", requestOptions)
+        fetch("http://localhost:4000/api/user/register", requestOptions)
         .then(router.push('/login'))
     }
 
