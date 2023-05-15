@@ -91,7 +91,7 @@
     border: 2px solid black;
     overflow-y: scroll;
     overflow-x: hidden;
-    
+    box-shadow: 6px 6px 0px 2px rgba(0,0,0,0.5);
 }
 
 ::-webkit-scrollbar {
@@ -178,5 +178,22 @@ button {
     height: max-content;
     padding: 0;
     width: max-content;
+}
+
+@media screen and (max-width: 670px) {
+    .list-body {
+    height: 40rem;
+    width: 20rem;
+}
+
+ul {
+    display: grid;
+    grid-template-columns: auto auto;
+    list-style: none;
+}
+
+.title {
+    width: 20rem;
+}
 }
 </style>

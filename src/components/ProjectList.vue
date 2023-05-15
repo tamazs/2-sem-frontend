@@ -88,6 +88,7 @@
     border: 2px solid black;
     overflow-y: scroll;
     overflow-x: hidden;
+    box-shadow: 6px 6px 0px 2px rgba(0,0,0,0.5);
 }
 
 ::-webkit-scrollbar {
@@ -145,5 +146,22 @@ img {
 a {
     text-decoration: none;
     color: black;
+}
+
+@media screen and (max-width: 670px) {
+    .list-body {
+    height: 40rem;
+    width: 20rem;
+}
+
+ul {
+    display: grid;
+    grid-template-columns: auto auto;
+    list-style: none;
+}
+
+h2 {
+    width: 20rem;
+}
 }
 </style>

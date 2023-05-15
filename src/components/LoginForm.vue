@@ -1,11 +1,11 @@
 <template>
     <div class="login-form">
-        <h2>Register</h2>
+        <h2>Login</h2>
         <div class="folder-body">
             <input type="email" placeholder="Email">
             <input type="password" placeholder="Password">
-            <button @click="newUser()">Register</button>
-            <p>Already registered? <RouterLink to="/register">Click here to log in!</RouterLink></p>
+            <button @click="newUser()">Login</button>
+            <p>Not registered yet? <RouterLink to="/register">Click here to sign up!</RouterLink></p>
         </div>
     </div>
 </template>
@@ -16,12 +16,13 @@
 
 <style scoped>
 .login-form {
-    height: 40rem;
+    height: 30rem;
     width: 40rem;
     position: absolute;
     background-color: white;
     padding: 0;
     border: 2px solid black;
+    box-shadow: 6px 6px 0px 2px rgba(0,0,0,0.5);
 }
 
 input {
@@ -65,5 +66,25 @@ p {
 
 a {
     color: #54B9AD;
+}
+
+@media screen and (max-width: 670px) {
+.login-form {
+    width: 20rem;
+    overflow: hidden;
+    height: 20rem;
+}
+
+h2 {
+    width: 20rem;
+}
+
+input {
+    width: 70%;
+}
+
+button {
+    padding: 1rem 1rem;
+}
 }
 </style>

@@ -25,6 +25,7 @@
     background-color: white;
     padding: 0;
     border: 2px solid black;
+    box-shadow: 6px 6px 0px 2px rgba(0,0,0,0.5);
 }
 
 .title {
@@ -97,5 +98,26 @@ input {
     width: 80%;
     height: 2rem;
     border: 1px solid black;
+}
+
+
+@media screen and (max-width: 670px) {
+.list-body {
+    height: 40rem;
+    width: 20rem;
+    overflow: hidden;
+}
+
+.title {
+    width: 20rem;
+}
+
+input {
+    width: 70%;
+}
+
+.edit-btn {
+    padding: 1rem 1rem;
+}
 }
 </style>

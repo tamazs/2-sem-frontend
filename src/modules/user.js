@@ -22,7 +22,7 @@ const getUser = () => {
                 email: state.value.email,
                 password: state.value.password
             })
-        }
+        };
         fetch("http://localhost:4000/api/user/register", requestOptions)
         .then(router.push('/login'))
     }

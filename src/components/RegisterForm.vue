@@ -19,12 +19,13 @@ const { state, newUser} = user()
 
 <style scoped>
 .register-form {
-    height: 40rem;
+    height: 30rem;
     width: 40rem;
     position: absolute;
     background-color: white;
     padding: 0;
     border: 2px solid black;
+    box-shadow: 6px 6px 0px 2px rgba(0,0,0,0.5);
 }
 
 input {
@@ -69,4 +70,24 @@ p {
 a {
     color: #54B9AD;
 }
+
+@media screen and (max-width: 670px) {
+.register-form {
+    width: 20rem;
+    overflow: hidden;
+}
+
+h2 {
+    width: 20rem;
+}
+
+input {
+    width: 70%;
+}
+
+button {
+    padding: 1rem 1rem;
+}
+}
+
 </style>

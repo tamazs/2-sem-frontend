@@ -30,6 +30,7 @@
     background-color: white;
     padding: 0;
     border: 2px solid black;
+    box-shadow: 6px 6px 0px 2px rgba(0,0,0,0.5);
 }
 
 .title {
@@ -85,5 +86,23 @@ button {
 p {
     max-width: 90%;
     overflow-wrap: break-word;
+}
+
+@media screen and (max-width: 670px) {
+.list-body {
+    height: 40rem;
+    width: 20rem;
+    overflow: hidden;
+}
+
+ul {
+    display: grid;
+    grid-template-columns: auto auto;
+    list-style: none;
+}
+
+.title {
+    width: 20rem;
+}
 }
 </style>

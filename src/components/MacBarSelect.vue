@@ -59,4 +59,10 @@ li {
 img {
     height: 1rem;
 }
+
+@media screen and (max-width: 670px) {
+    .mac-bar {
+    height: 3rem;
+}
+}
 </style>
