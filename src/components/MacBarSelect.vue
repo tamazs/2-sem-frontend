@@ -2,14 +2,14 @@
     <section class="mac-bar">
         <div class="mac-bar-left">
             <ul>
-                <li><b>Welcome, Mr Bean</b></li>
+                <li><b>Welcome, Mr.Bean</b></li>
             </ul>
         </div>
         <div class="mac-bar-right">
             <ul>
                 <li><img src="../assets/icon-battery-m.png" alt="Battery"></li>
                 <li>{{ moment().format('ddd MMM Do') }}</li>
-                <li><b>Log out</b></li>
+                <li><button @click="logOut()">Log out</button></li>
             </ul>
         </div>
     </section>
@@ -17,6 +17,9 @@
 
 <script setup>
 import moment from "moment";
+import user from '../modules/user';
+
+const { logOut } = user()
 
 </script>
 

@@ -2,16 +2,18 @@
     <div class="login-form">
         <h2>Login</h2>
         <div class="folder-body">
-            <input type="email" placeholder="Email">
-            <input type="password" placeholder="Password">
-            <button @click="newUser()">Login</button>
+            <input type="email" placeholder="Email" v-model="uState.email">
+            <input type="password" placeholder="Password" v-model="uState.password">
+            <button @click="loginUser()">Login</button>
             <p>Not registered yet? <RouterLink to="/register">Click here to sign up!</RouterLink></p>
         </div>
     </div>
 </template>
 
 <script setup>
+import user from '../modules/user';
 
+const { uState, loginUser} = user()
 </script>
 
 <style scoped>

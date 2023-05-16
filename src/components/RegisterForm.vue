@@ -2,9 +2,9 @@
     <div class="register-form">
         <h2>Register</h2>
         <div class="folder-body">
-            <input type="text" placeholder="Name" v-model="state.name">
-            <input type="email" placeholder="Email" v-model="state.email">
-            <input type="password" placeholder="Password" v-model="state.password">
+            <input type="text" placeholder="Name" v-model="uState.name">
+            <input type="email" placeholder="Email" v-model="uState.email">
+            <input type="password" placeholder="Password" v-model="uState.password">
             <button @click="newUser()">Register</button>
             <p>Already registered? <RouterLink to="/login">Click here to log in!</RouterLink></p>
         </div>
@@ -14,7 +14,7 @@
 <script setup>
 import user from '../modules/user';
 
-const { state, newUser} = user()
+const { uState, newUser} = user()
 </script>
 
 <style scoped>
