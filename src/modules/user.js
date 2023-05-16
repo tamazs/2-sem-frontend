@@ -28,21 +28,29 @@ const getUser = () => {
         .then(router.push('/login'))
     }
 
-    const loginUser = () => {
-        const requestOptions = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "auth-token": localStorage.getItem("data.token")
-            },
-            body: JSON.stringify({ 
-                email: uState.email,
-                password: uState.password 
+    const loginUser = async () => {
+        try {
+            const requestOptions = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ 
+                    email: uState.email,
+                    password: uState.password 
+                })
+            };
+            await fetch("http://localhost:4000/api/user/login", requestOptions)
+            .then(res => res.json())
+            .then(data => {
+                localStorage.setItem("auth-token", data.data.token)
             })
-        };
-       
-        fetch("http://localhost:4000/api/user/login", requestOptions)
-        .then(router.push('/'))
+            .then(router.push('/'))
+        }
+        catch(error) {
+            console.log(error)
+        }
+        
     }
 
     const logOut = () => {

@@ -63,6 +63,11 @@ img {
     height: 1rem;
 }
 
+button {
+    background-color: #fad844;
+    border: 2px solid black;
+}
+
 @media screen and (max-width: 670px) {
     .mac-bar {
     height: 3rem;

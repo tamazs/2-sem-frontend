@@ -10,7 +10,7 @@ body {
   cursor: url(./cursor-mouse.png), default;
 }
 
-a {
+a, button {
   cursor: pointer;
   cursor: url(./cursor-pointer.png), pointer;
 }
