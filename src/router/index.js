@@ -60,6 +60,22 @@ import { createRouter, createWebHistory } from 'vue-router'
       component: () => import('../views/RegisterView.vue')
     },
     {
+      path: '/createproject',
+      name: 'createproject',
+      component: () => import('../views/CreateProject.vue'),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/createtask',
+      name: 'createtask',
+      component: () => import('../views/CreateTask.vue'),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: '/settings',
       name: 'settings',
       component: () => import('../views/SettingsView.vue'),

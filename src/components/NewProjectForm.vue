@@ -1,19 +1,13 @@
 <template>
     <div class="list-body">
         <div class="task-top">
-            <button @click="router.go(-1)"><h2 class="close-btn">X</h2></button>
-            <h2 class="title">Name</h2>
+            <button class="close-button" @click="router.go(-1)"><h2 class="close-btn">X</h2></button>
+            <h2 class="title">Create project</h2>
         </div>
         <div class="folder-body">
-            <p><b>Name:</b> Mr Bean</p>
-            <p><b>Email:</b> mrbean@gmail.com</p>
-            <p><b>Tasks:</b></p>
-            <ul>
-                <li>Task 1</li>
-                <li>Task 2</li>
-                <li>Task 3</li>
-                <li>Task 4</li>
-            </ul>
+            <input type="text" placeholder="Project title">
+            <input type="text" placeholder="Member email">
+            <button class="create-btn">Create</button>
         </div>
     </div>
 </template>
@@ -35,6 +29,21 @@ import router from '../router';
     box-shadow: 6px 6px 0px 2px rgba(0,0,0,0.5);
 }
 
+.create-btn {
+    background-color: #54B9AD;
+    color: white;
+    padding: 1rem 2rem;
+    width: 30%;
+    border: 2px solid black;
+}
+
+input {
+    margin-bottom: 1.5rem;
+    width: 80%;
+    height: 2rem;
+    border: 1px solid black;
+}
+
 .title {
     width: 40rem;
     height: max-content;
@@ -50,7 +59,9 @@ import router from '../router';
 .folder-body {
     width: 100%;
     height: 100%;
-    padding: 2rem;
+    padding: 5rem 3rem;
+    display: flex;
+    flex-direction: column;
 }
 
 img {
@@ -70,7 +81,7 @@ a {
     font-size: 1rem;
 }
 
-button {
+.close-button {
     position: fixed;
     z-index: 4;
     background-color: #DADAD3;

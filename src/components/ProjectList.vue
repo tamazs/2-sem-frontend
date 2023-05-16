@@ -2,6 +2,14 @@
     <div class="list-body">
         <h2>Projects</h2>
         <div class="folder-body">
+            <ul class="newlist">
+                <li>
+                    <RouterLink to="/createproject">
+                        <img src="../assets/icon-folder.svg" alt="">
+                        <h3>Create project</h3>
+                    </RouterLink>
+                </li>
+            </ul>
             <ul>
                 <li>
                     <RouterLink to="/project">
@@ -89,6 +97,10 @@
     overflow-y: scroll;
     overflow-x: hidden;
     box-shadow: 6px 6px 0px 2px rgba(0,0,0,0.5);
+}
+
+.newlist {
+    border-bottom: #989893 2px solid;
 }
 
 ::-webkit-scrollbar {
