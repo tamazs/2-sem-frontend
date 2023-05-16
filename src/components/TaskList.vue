@@ -1,7 +1,7 @@
 <template>
     <div class="list-body">
         <div class="task-top">
-            <button><h2 class="close-btn">X</h2></button>
+            <button @click="router.go(-1)"><h2 class="close-btn">X</h2></button>
             <h2 class="title">Tasks</h2>
         </div>
         <div class="folder-body">
@@ -78,6 +78,8 @@
 </template>
 
 <script setup>
+import router from '../router';
+
 
 </script>
 

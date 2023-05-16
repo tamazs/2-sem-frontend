@@ -1,7 +1,7 @@
 <template>
     <div class="list-body">
         <div class="task-top">
-            <button class="close"><h2 class="close-btn">X</h2></button>
+            <button class="close" @click="router.go(-1)"><h2 class="close-btn">X</h2></button>
             <h2 class="title">Account settings</h2>
         </div>
         <div class="folder-body">
@@ -14,6 +14,8 @@
 </template>
 
 <script setup>
+import router from '../router';
+
 
 </script>
 
