@@ -5,9 +5,8 @@
             <h2 class="title">Create project</h2>
         </div>
         <div class="folder-body">
-            <input type="text" placeholder="Project title">
-            <input type="text" placeholder="Member email">
-            <button class="create-btn">Create</button>
+            <input type="text" placeholder="Project title" v-model="pState.title">
+            <button class="create-btn" @click="newProject()">Create</button>
         </div>
     </div>
 </template>
@@ -15,7 +14,9 @@
 <script setup>
 import router from '../router';
 
+import project from '../modules/project';
 
+const { pState, newProject} = project()
 </script>
 
 <style scoped>

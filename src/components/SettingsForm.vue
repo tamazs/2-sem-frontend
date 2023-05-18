@@ -2,20 +2,22 @@
     <div class="list-body">
         <div class="task-top">
             <button class="close" @click="router.go(-1)"><h2 class="close-btn">X</h2></button>
-            <h2 class="title">Account settings</h2>
+            <h2 class="title">Update project</h2>
         </div>
         <div class="folder-body">
-            <input type="text" value="Mr Bean" placeholder="Name">
-            <input type="email" value="mrbean@gmail.com" placeholder="Email">
-            <input type="password" placeholder="Password">
-            <button class="edit-btn">Edit account</button>
+            <input type="text" placeholder="Title" v-model="pState.title">
+            <button class="edit-btn" @click="editProject()">Edit project</button>
         </div>
     </div>
 </template>
 
 <script setup>
 import router from '../router';
+import project from '../modules/project';
 
+const { pState, getSpecificProject, editProject} = project()
+
+getSpecificProject();
 
 </script>
 

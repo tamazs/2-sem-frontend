@@ -2,7 +2,7 @@
     <section class="mac-bar">
         <div class="mac-bar-left">
             <ul>
-                <li><b>Project 1</b></li>
+                <li><b>{{ pState.projects.title }}</b></li>
             </ul>
         </div>
         <div class="mac-bar-right">
@@ -18,6 +18,11 @@
 <script setup>
 import moment from "moment";
 import user from '../modules/user';
+import project from '../modules/project';
+
+const { pState, getSpecificProject} = project()
+
+getSpecificProject();
 
 const { logOut } = user()
 

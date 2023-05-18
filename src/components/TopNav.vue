@@ -2,19 +2,19 @@
     <section class="top-nav">
         <ul>
             <li>
-                <RouterLink to="/tasks">
+                <RouterLink :to="`/tasks/${id}/${states[0]}`">
                     <img src="../assets/icon-folder.svg" alt="">
                     <h2>ToDo</h2>
                 </RouterLink>
             </li>
             <li>
-                <RouterLink to="/tasks">
+                <RouterLink :to="`/tasks/${id}/${states[1]}`">
                     <img src="../assets/icon-folder.svg" alt="">
                     <h2>Doing</h2>
                 </RouterLink>
             </li>
             <li>
-                <RouterLink to="/tasks">
+                <RouterLink :to="`/tasks/${id}/${states[2]}`">
                     <img src="../assets/icon-folder.svg" alt="">
                     <h2>Done</h2>
                 </RouterLink>
@@ -24,6 +24,12 @@
 </template>
 
 <script setup>
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+
+const id = route.params.id;
+const states = ["ToDo", "Doing", "Done"]
 
 </script>
 

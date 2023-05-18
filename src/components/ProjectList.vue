@@ -10,72 +10,12 @@
                     </RouterLink>
                 </li>
             </ul>
-            <ul>
+            <ul v-for="project in pState.projects" :key="project._id">
                 <li>
-                    <RouterLink to="/project">
+                    <RouterLink :to="`/project/${project._id}`">
                         <img src="../assets/icon-folder.svg" alt="">
-                        <h3>Project 1</h3>
+                        <h3>{{ project.title }}</h3>
                     </RouterLink>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
                 </li>
             </ul>
         </div>
@@ -83,7 +23,14 @@
 </template>
 
 <script setup>
+import project from '../modules/project';
+import { onMounted } from 'vue';
 
+const { pState, getUserProjects} = project()
+
+onMounted(() => {
+    getUserProjects()
+})
 </script>
 
 <style scoped>

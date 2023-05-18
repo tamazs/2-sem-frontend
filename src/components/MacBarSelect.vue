@@ -2,7 +2,7 @@
     <section class="mac-bar">
         <div class="mac-bar-left">
             <ul>
-                <li><b>Welcome, Mr.Bean</b></li>
+                <li><b>Welcome, {{ userName }}</b></li>
             </ul>
         </div>
         <div class="mac-bar-right">
@@ -18,6 +18,8 @@
 <script setup>
 import moment from "moment";
 import user from '../modules/user';
+
+const userName = localStorage.getItem("userName");
 
 const { logOut } = user()
 

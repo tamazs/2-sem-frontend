@@ -43,9 +43,13 @@ const getUser = () => {
             await fetch("http://localhost:4000/api/user/login", requestOptions)
             .then(res => res.json())
             .then(data => {
-                localStorage.setItem("auth-token", data.data.token)
+                localStorage.setItem("auth-token", data.data.token),
+                localStorage.setItem("userID", data.data.id),
+                localStorage.setItem("userName", data.data.name),
+                localStorage.setItem("email", data.data.email),
+                localStorage.setItem("userType", data.data.userType)
             })
-            .then(router.push('/'))
+            .then(router.push('/' + localStorage.getItem("userID")))
         }
         catch(error) {
             console.log(error)

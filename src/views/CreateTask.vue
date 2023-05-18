@@ -1,6 +1,6 @@
 <template>
     <header>
-        <MacBarSelect/>
+        <MacBar/>
     </header>
     <div class="ct-body">
         <NewTaskForm/>
@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import MacBarSelect from '../components/MacBarSelect.vue';
+import MacBar from '../components/MacBar.vue';
 import NewTaskForm from '../components/NewTaskForm.vue';
 
 

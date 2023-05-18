@@ -5,9 +5,8 @@
             <h2 class="title">Create task</h2>
         </div>
         <div class="folder-body">
-            <input type="text" placeholder="Task title">
-            <input type="text" placeholder="Assign to">
-            <button class="create-btn">Create</button>
+            <input type="text" placeholder="Task title" v-model="tState.title">
+            <button class="create-btn" @click="newTask()">Create</button>
         </div>
     </div>
 </template>
@@ -15,7 +14,9 @@
 <script setup>
 import router from '../router';
 
+import task from '../modules/task';
 
+const { tState, newTask } = task()
 </script>
 
 <style scoped>

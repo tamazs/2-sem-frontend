@@ -2,7 +2,7 @@
     <section class="bottom-nav">
         <ul>
             <li>
-                <RouterLink to="/">
+                <RouterLink :to="`/${userID}`">
                     <img src="../assets/icon-eye.svg" alt="Eye icon">
                     <h3 class="bottom-nav-tooltip">
                         <span class="tooltip-arrow"></span>
@@ -38,7 +38,7 @@
                 </a>
             </li>
             <li>
-                <RouterLink to="/settings">
+                <RouterLink :to="`/settings/${id}`">
                     <img src="../assets/icon-settings.svg" alt="Settings icon">
                     <h3 class="bottom-nav-tooltip">
                         <span class="tooltip-arrow"></span>
@@ -47,18 +47,28 @@
                 </RouterLink>
             </li>
             <li>
-                <img src="../assets/icon-bin.svg" alt="Bin icon">
-                <h3 class="bottom-nav-tooltip">
-                    <span class="tooltip-arrow"></span>
-                    Mark as done
-                </h3>
+                <div @click="deleteProject()">
+                    <img src="../assets/icon-bin.svg" alt="Bin icon">
+                    <h3 class="bottom-nav-tooltip">
+                        <span class="tooltip-arrow"></span>
+                        Delete project
+                    </h3>
+                </div>
             </li>
         </ul>
     </section>
 </template>
 
 <script setup>
+import project from '../modules/project';
+import { useRoute } from 'vue-router';
 
+const route = useRoute();
+
+const userID = localStorage.getItem("userID")
+const id = route.params.id;
+
+const { deleteProject } = project()
 </script>
 
 <style scoped>

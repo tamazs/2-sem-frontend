@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
   const routes = [
     {
-      path: '/project',
+      path: '/project/:id',
       name: 'project',
       component: () => import('../views/ProjectView.vue'),
       meta: {
@@ -10,7 +10,7 @@ import { createRouter, createWebHistory } from 'vue-router'
       }
     },
     {
-      path: '/',
+      path: '/:id',
       name: 'projectlist',
       component: () => import('../views/ProjectList.vue'),
       meta: {
@@ -18,7 +18,7 @@ import { createRouter, createWebHistory } from 'vue-router'
       }
     },
     {
-      path: '/tasks',
+      path: '/tasks/:id/:state',
       name: 'tasklist',
       component: () => import('../views/TaskList.vue'),
       meta: {
@@ -68,7 +68,7 @@ import { createRouter, createWebHistory } from 'vue-router'
       }
     },
     {
-      path: '/createtask',
+      path: '/createtask/:id',
       name: 'createtask',
       component: () => import('../views/CreateTask.vue'),
       meta: {
@@ -76,7 +76,7 @@ import { createRouter, createWebHistory } from 'vue-router'
       }
     },
     {
-      path: '/settings',
+      path: '/settings/:id',
       name: 'settings',
       component: () => import('../views/SettingsView.vue'),
       meta: {

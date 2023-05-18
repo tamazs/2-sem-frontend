@@ -7,78 +7,18 @@
         <div class="folder-body">
             <ul class="newlist">
                 <li>
-                    <RouterLink to="/createtask">
+                    <RouterLink :to="`/createtask/${id}`">
                         <img src="../assets/icon-folder.svg" alt="">
                         <h3>Create task</h3>
                     </RouterLink>
                 </li>
             </ul>
-            <ul>
+            <ul v-for="task in tState.tasks" :key="task._id">
                 <li>
-                    <RouterLink to="/task">
+                    <RouterLink :to="`/task/${task._id}`">
                         <img src="../assets/icon-folder.svg" alt="">
-                        <h3>Task 1</h3>
+                        <h3>{{ task.title }}</h3>
                     </RouterLink>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-folder.svg" alt="">
-                    <h3>Project 1</h3>
                 </li>
             </ul>
         </div>
@@ -87,7 +27,19 @@
 
 <script setup>
 import router from '../router';
+import task from '../modules/task';
+import { onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 
+const route = useRoute();
+
+const id = route.params.id;
+
+const { tState, getTasks } = task()
+
+onMounted(() => {
+    getTasks()
+})
 
 </script>
 
