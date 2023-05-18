@@ -10,7 +10,7 @@ const getProject = () => {
 
     const pState = reactive({
         title: '',
-        members: '',
+        members: [],
         projects: ''
     })
 
@@ -82,7 +82,23 @@ const getProject = () => {
                 "auth-token": localStorage.getItem("auth-token")
             },
             body: JSON.stringify({ 
-                title: pState.title
+                title: pState.title,
+            })
+        };
+       
+        fetch("http://localhost:4000/api/projects/update/" + projectId.value, requestOptions)
+        .then(router.push('/project/' + projectId.value))
+    };
+
+    const addMemberProject = () => {
+        const requestOptions = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "auth-token": localStorage.getItem("auth-token")
+            },
+            body: JSON.stringify({ 
+                title: pState.title,
             })
         };
        

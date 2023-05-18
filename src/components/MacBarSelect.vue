@@ -2,7 +2,10 @@
     <section class="mac-bar">
         <div class="mac-bar-left">
             <ul>
-                <li><b>Welcome, {{ userName }}</b></li>
+                <li class="title"><b>Welcome, {{ userName }}</b></li>
+                <RouterLink to="/accountsettings">
+                    <li>Settings</li>
+                </RouterLink>
             </ul>
         </div>
         <div class="mac-bar-right">
@@ -68,6 +71,15 @@ img {
 button {
     background-color: #fad844;
     border: 2px solid black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.title {
+    margin-right: 2rem;
 }
 
 @media screen and (max-width: 670px) {

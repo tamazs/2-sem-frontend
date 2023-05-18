@@ -5,6 +5,14 @@
             <h2 class="title">Tasks</h2>
         </div>
         <div class="folder-body">
+            <ul class="newlist">
+                <li>
+                    <RouterLink :to="`/addmember/${id}`">
+                        <img src="../assets/icon-about.svg" alt="">
+                        <h3>Add new member</h3>
+                    </RouterLink>
+                </li>
+            </ul>
             <ul>
                 <li>
                     <RouterLink to="/member">
@@ -39,7 +47,11 @@
 
 <script setup>
 import router from '../router';
+import { useRoute } from 'vue-router';
 
+const route = useRoute();
+
+const id = route.params.id;
 
 </script>
 
@@ -54,6 +66,10 @@ import router from '../router';
     overflow-y: scroll;
     overflow-x: hidden;
     box-shadow: 6px 6px 0px 2px rgba(0,0,0,0.5);
+}
+
+.newlist {
+    border-bottom: #989893 2px solid;
 }
 
 ::-webkit-scrollbar {

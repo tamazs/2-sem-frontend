@@ -2,7 +2,10 @@
     <section class="mac-bar">
         <div class="mac-bar-left">
             <ul>
-                <li><b>{{ pState.projects.title }}</b></li>
+                <li class="title"><b>{{ pState.projects.title }}</b></li>
+                <RouterLink :to="`/accountsettings/${userID}`">
+                    <li>Settings</li>
+                </RouterLink>
             </ul>
         </div>
         <div class="mac-bar-right">
@@ -19,6 +22,8 @@
 import moment from "moment";
 import user from '../modules/user';
 import project from '../modules/project';
+
+const userID = localStorage.getItem("userID")
 
 const { pState, getSpecificProject} = project()
 
@@ -73,6 +78,14 @@ button {
     border: 2px solid black;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.title {
+    margin-right: 2rem;
+}
 @media screen and (max-width: 670px) {
     .mac-bar {
     height: 3rem;

@@ -2,12 +2,11 @@
     <div class="list-body">
         <div class="task-top">
             <button class="close-button" @click="router.go(-1)"><h2 class="close-btn">X</h2></button>
-            <h2 class="title">Create task</h2>
+            <h2 class="title">Create project</h2>
         </div>
         <div class="folder-body">
-            <input type="text" placeholder="Task title" v-model="tState.title">
-            <input type="text" placeholder="Task details" v-model="tState.details">
-            <button class="create-btn" @click="newTask()">Create</button>
+            <input type="text" placeholder="Project title">
+            <button class="create-btn">Create</button>
         </div>
     </div>
 </template>
@@ -15,9 +14,6 @@
 <script setup>
 import router from '../router';
 
-import task from '../modules/task';
-
-const { tState, newTask } = task()
 </script>
 
 <style scoped>

@@ -34,7 +34,7 @@ import { createRouter, createWebHistory } from 'vue-router'
       }
     },
     {
-      path: '/members',
+      path: '/members/:id',
       name: 'members',
       component: () => import('../views/MemberList.vue'),
       meta: {
@@ -71,6 +71,22 @@ import { createRouter, createWebHistory } from 'vue-router'
       path: '/createtask/:id',
       name: 'createtask',
       component: () => import('../views/CreateTask.vue'),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/addmember/:id',
+      name: 'addmember',
+      component: () => import('../views/AddMemberView.vue'),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/accountsettings/:id',
+      name: 'accountsettings',
+      component: () => import('../views/AccountSettingsView.vue'),
       meta: {
         requiresAuth: true
       }

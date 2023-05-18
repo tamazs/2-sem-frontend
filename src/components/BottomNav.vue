@@ -11,7 +11,7 @@
                 </RouterLink>
             </li>
             <li style="bottom: 2rem;">
-                <RouterLink to="/members">
+                <RouterLink :to="`/members/${id}`">
                     <img src="../assets/icon-about.svg" style="height: 5rem;" alt="About icon">
                     <h3 class="bottom-nav-tooltip">
                         <span class="tooltip-arrow"></span>
