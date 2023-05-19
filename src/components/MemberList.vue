@@ -13,8 +13,8 @@
                     </RouterLink>
                 </li>
             </ul>
-            <ul v-for="member in pState.members" :key="member.id">
-                <li>
+            <ul class="member-grid">
+                <li v-for="member in pState.members" :key="member.id">
                     <RouterLink :to="`/member/${id}/${member.id}`">
                         <img src="../assets/icon-about.svg" alt="">
                         <h3>{{ member.name }}</h3>
@@ -97,19 +97,19 @@ const id = route.params.id;
 }
 
 ul {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
     list-style: none;
 }
 
-li {
+ul.member-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-gap: 0rem;
+}
+
+ul.project-grid li{
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-h3 {
-    text-align: center;
 }
 
 .folder-body {

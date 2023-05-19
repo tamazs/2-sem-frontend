@@ -13,8 +13,8 @@
                     </RouterLink>
                 </li>
             </ul>
-            <ul v-for="task in tState.tasks" :key="task._id">
-                <li>
+            <ul class="task-grid">
+                <li v-for="task in tState.tasks" :key="task._id">
                     <RouterLink :to="`/task/${id}/${task._id}`">
                         <img src="../assets/icon-folder.svg" alt="">
                         <h3>{{ task.title }}</h3>
@@ -97,19 +97,19 @@ onMounted(() => {
 }
 
 ul {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
     list-style: none;
 }
 
-li {
+ul.task-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-gap: 0rem;
+}
+
+ul.task-grid li{
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-h3 {
-    text-align: center;
 }
 
 .folder-body {

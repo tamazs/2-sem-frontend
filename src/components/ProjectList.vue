@@ -10,8 +10,8 @@
                     </RouterLink>
                 </li>
             </ul>
-            <ul v-for="project in pState.projects" :key="project._id">
-                <li>
+            <ul class="project-grid">
+                <li v-for="project in pState.projects" :key="project._id">
                     <RouterLink :to="`/project/${project._id}`">
                         <img src="../assets/icon-folder.svg" alt="">
                         <h3>{{ project.title }}</h3>
@@ -87,9 +87,19 @@ h2 {
 }
 
 ul {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
     list-style: none;
+}
+
+ul.project-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-gap: 0rem;
+}
+
+ul.project-grid li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .folder-body {
