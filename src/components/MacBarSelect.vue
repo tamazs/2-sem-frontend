@@ -3,7 +3,7 @@
         <div class="mac-bar-left">
             <ul>
                 <li class="title"><b>Welcome, {{ userName }}</b></li>
-                <RouterLink to="/accountsettings">
+                <RouterLink :to="`/accountsettings/${userID}`">
                     <li>Settings</li>
                 </RouterLink>
             </ul>
@@ -22,6 +22,7 @@
 import moment from "moment";
 import user from '../modules/user';
 
+const userID = localStorage.getItem("userID")
 const userName = localStorage.getItem("userName");
 
 const { logOut } = user()

@@ -2,25 +2,26 @@
     <div class="list-body">
         <div class="task-top">
             <button @click="router.go(-1)"><h2 class="close-btn">X</h2></button>
-            <h2 class="title">Name</h2>
+            <h2 class="title">Member details</h2>
         </div>
-        <div class="folder-body">
-            <p><b>Name:</b> Mr Bean</p>
-            <p><b>Email:</b> mrbean@gmail.com</p>
-            <p><b>Tasks:</b></p>
-            <ul>
-                <li>Task 1</li>
-                <li>Task 2</li>
-                <li>Task 3</li>
-                <li>Task 4</li>
-            </ul>
+        <div class="folder-body" v-for="member in pState.members" :key="member._id">
+            <p><b>Name:</b>{{ member.name }}</p>
+            <p><b>Email:</b> {{ member.email }}</p>
+            <button class="create-btn" @click="deleteMember(member._id)">Delete member</button>
         </div>
     </div>
 </template>
 
 <script setup>
 import router from '../router';
+import project from '../modules/project';
+import { onMounted } from 'vue';
 
+const { pState, getMemberDetails, deleteMember } = project()
+
+onMounted(() => {
+    getMemberDetails()
+})
 
 </script>
 
@@ -33,6 +34,14 @@ import router from '../router';
     padding: 0;
     border: 2px solid black;
     box-shadow: 6px 6px 0px 2px rgba(0,0,0,0.5);
+}
+
+.create-btn {
+    background-color: #54B9AD;
+    color: white;
+    padding: 1rem 2rem;
+    width: 20%;
+    border: 2px solid black;
 }
 
 .title {

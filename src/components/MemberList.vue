@@ -13,32 +13,12 @@
                     </RouterLink>
                 </li>
             </ul>
-            <ul>
+            <ul v-for="member in pState.members" :key="member.id">
                 <li>
-                    <RouterLink to="/member">
+                    <RouterLink :to="`/member/${id}/${member.id}`">
                         <img src="../assets/icon-about.svg" alt="">
-                        <h3>Mr Bean</h3>
+                        <h3>{{ member.name }}</h3>
                     </RouterLink>
-                </li>
-                <li>
-                    <img src="../assets/icon-about.svg" alt="">
-                    <h3>Mr Bean</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-about.svg" alt="">
-                    <h3>Mr Bean</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-about.svg" alt="">
-                    <h3>Mr Bean</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-about.svg" alt="">
-                    <h3>Mr Bean</h3>
-                </li>
-                <li>
-                    <img src="../assets/icon-about.svg" alt="">
-                    <h3>Mr Bean</h3>
                 </li>
             </ul>
         </div>
@@ -48,6 +28,14 @@
 <script setup>
 import router from '../router';
 import { useRoute } from 'vue-router';
+import project from '../modules/project';
+import { onMounted } from 'vue';
+
+const { pState, getMembers } = project()
+
+onMounted(() => {
+    getMembers()
+})
 
 const route = useRoute();
 

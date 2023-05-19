@@ -74,6 +74,52 @@ const getProject = () => {
         }
     };
 
+    const getMembers = async () => {
+        const requestOptions = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "auth-token": localStorage.getItem("auth-token")
+            }
+        };
+
+        try {
+            fetch("http://localhost:4000/api/projects/members/" + projectId.value, requestOptions)
+            .then(res => res.json())
+            .then(data => {
+                pState.members = data.members
+            })
+        }
+        catch(error) {
+            console.log(error)
+        }
+    };
+
+    const getMemberDetails = async () => {
+        const requestOptions = {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": localStorage.getItem("auth-token")
+          }
+        };
+      
+        try {
+            const memberId = route.params.memberId;
+          fetch(
+            "http://localhost:4000/api/projects/members/" + projectId.value + "/" + memberId,
+            requestOptions
+          )
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data)
+              pState.members = data.member
+            });
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
     const editProject = () => {
         const requestOptions = {
             method: "PUT",
@@ -102,7 +148,8 @@ const getProject = () => {
             })
         };
         fetch("http://localhost:4000/api/projects/add-member/" + projectId.value, requestOptions)
-        .then(router.push('/project/' + projectId.value))
+        .then(router.push('/members/' + projectId.value))
+        getMembers();
     };
 
     const deleteProject = () => {
@@ -118,7 +165,29 @@ const getProject = () => {
         .then(router.push('/' + localStorage.getItem("userID")))
     };
 
-    return { pState, getUserProjects, newProject, getSpecificProject, editProject, addMemberProject, deleteProject}
+    const deleteMember = async () => {
+        const requestOptions = {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": localStorage.getItem("auth-token"),
+          },
+        };
+      
+        try {
+            const memberId = route.params.memberId;
+          await fetch(
+            "http://localhost:4000/api/projects/delete-member/" + projectId.value + "/" + memberId,
+            requestOptions
+          )
+          .then(router.push('/members/' + projectId.value))
+          getMembers();
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+    return { pState, getUserProjects, newProject, getSpecificProject, editProject, addMemberProject, deleteProject, getMembers, getMemberDetails, deleteMember}
 }
 
 export default getProject

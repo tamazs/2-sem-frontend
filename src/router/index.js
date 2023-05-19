@@ -42,7 +42,7 @@ import { createRouter, createWebHistory } from 'vue-router'
       }
     },
     {
-      path: '/member',
+      path: '/member/:id/:memberId',
       name: 'member',
       component: () => import('../views/MemberView.vue'),
       meta: {
