@@ -26,7 +26,7 @@ import { createRouter, createWebHistory } from 'vue-router'
       }
     },
     {
-      path: '/task',
+      path: '/task/:id/:taskId',
       name: 'task',
       component: () => import('../views/TaskView.vue'),
       meta: {
@@ -87,6 +87,14 @@ import { createRouter, createWebHistory } from 'vue-router'
       path: '/accountsettings/:id',
       name: 'accountsettings',
       component: () => import('../views/AccountSettingsView.vue'),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/edittask/:id/:taskId',
+      name: 'edittask',
+      component: () => import('../views/EditTaskView.vue'),
       meta: {
         requiresAuth: true
       }

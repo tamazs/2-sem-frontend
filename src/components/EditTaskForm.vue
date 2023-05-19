@@ -1,27 +1,26 @@
 <template>
     <div class="list-body">
         <div class="task-top">
-            <button @click="router.go(-1)"><h2 class="close-btn">X</h2></button>
-            <h2 class="title">Member details</h2>
+            <button class="close" @click="router.go(-1)"><h2 class="close-btn">X</h2></button>
+            <h2 class="title">Update task</h2>
         </div>
         <div class="folder-body">
-            <p><b>Name:</b> {{ pState.members.name }}</p>
-            <p><b>Email:</b> {{ pState.members.email }}</p>
-            <button class="create-btn" @click="deleteMember(pState.members._id)">Delete member</button>
+            <input type="text" placeholder="Title" v-model="tState.title">
+            <input type="text" placeholder="Details" v-model="tState.detail">
+            <input type="text" placeholder="Assigned To" v-model="tState.assignedTo">
+            <button class="edit-btn" @click="editTask()">Edit task</button>
+            <button class="edit-btn" style="margin-top: 2rem;" @click="deleteTask()">Delete task</button>
         </div>
     </div>
 </template>
 
 <script setup>
 import router from '../router';
-import project from '../modules/project';
-import { onMounted } from 'vue';
+import task from '../modules/task';
 
-const { pState, getMemberDetails, deleteMember } = project()
+const { tState, getSpecificTask, editTask, deleteTask } = task()
 
-onMounted(() => {
-    getMemberDetails()
-})
+getSpecificTask();
 
 </script>
 
@@ -36,14 +35,6 @@ onMounted(() => {
     box-shadow: 6px 6px 0px 2px rgba(0,0,0,0.5);
 }
 
-.create-btn {
-    background-color: #54B9AD;
-    color: white;
-    padding: 1rem 2rem;
-    width: 20%;
-    border: 2px solid black;
-}
-
 .title {
     width: 40rem;
     height: max-content;
@@ -56,10 +47,16 @@ onMounted(() => {
     position: fixed;
 }
 
+h3 {
+    text-align: center;
+}
+
 .folder-body {
     width: 100%;
     height: 100%;
-    padding: 2rem;
+    padding: 5rem 3rem;
+    display: flex;
+    flex-direction: column;
 }
 
 img {
@@ -79,7 +76,7 @@ a {
     font-size: 1rem;
 }
 
-button {
+.close {
     position: fixed;
     z-index: 4;
     background-color: #DADAD3;
@@ -90,10 +87,26 @@ button {
     width: max-content;
 }
 
+.edit-btn {
+    background-color: #54B9AD;
+    color: white;
+    padding: 1rem 2rem;
+    width: 30%;
+    border: 2px solid black;
+}
+
 p {
     max-width: 90%;
     overflow-wrap: break-word;
 }
+
+input {
+    margin-bottom: 1.5rem;
+    width: 80%;
+    height: 2rem;
+    border: 1px solid black;
+}
+
 
 @media screen and (max-width: 670px) {
 .list-body {
@@ -102,14 +115,16 @@ p {
     overflow: hidden;
 }
 
-ul {
-    display: grid;
-    grid-template-columns: auto auto;
-    list-style: none;
-}
-
 .title {
     width: 20rem;
+}
+
+input {
+    width: 70%;
+}
+
+.edit-btn {
+    padding: 1rem 1rem;
 }
 }
 </style>

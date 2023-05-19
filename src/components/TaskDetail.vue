@@ -1,19 +1,46 @@
 <template>
     <div class="list-body">
         <div class="task-top">
-            <button @click="router.go(-1)"><h2 class="close-btn">X</h2></button>
-            <h2 class="title">Task Name</h2>
+            <button class="close" @click="router.go(-1)"><h2 class="close-btn">X</h2></button>
+            <h2 class="title">Task Details</h2>
         </div>
         <div class="folder-body">
-            <p><b>Details:</b> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat sunt accusantium nihil voluptatibus ad modi, minus nemo dignissimos laborum autem adipisci excepturi iusto commodi mollitia ipsa doloremque molestias. Aperiam, provident?</p>
-            <p><b>Assigned to:</b> Mr Bean</p>
-            <p><b>Created at:</b> 2023/04/21</p>
+            <p><b>Title:</b> {{ tState.tasks.title }}</p>
+            <p><b>Details:</b> {{ tState.tasks.detail }}</p>
+            <p><b>Assigned to:</b> {{ tState.tasks.assignedTo }}</p>
+            <p><b>State:</b> {{ tState.tasks.state }}</p>
+            <p><b>Created at:</b> {{ formatDateTime(tState.tasks.createdDate) }}</p>
+            <button v-if="tState.tasks.state != 'ToDo'" class="edit-btn" style="margin-top: 2rem;" @click="editTaskState(tState.tasks._id, states[0])">Move to ToDo</button>
+            <button v-if="tState.tasks.state != 'Doing'" class="edit-btn" style="margin-top: 2rem;" @click="editTaskState(tState.tasks._id, states[1])">Move to Doing</button>
+            <button v-if="tState.tasks.state != 'Done'" class="edit-btn" style="margin-top: 2rem;" @click="editTaskState(tState.tasks._id, states[2])">Move to Done</button>
+            <button class="edit-btn" style="margin-top: 2rem;" @click="router.push('/edittask/'+ id + '/' + tState.tasks._id)">Edit task</button>
         </div>
     </div>
 </template>
 
 <script setup>
 import router from '../router';
+import task from '../modules/task';
+import { onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+
+const id = route.params.id;
+
+const states = ["ToDo", "Doing", "Done"]
+
+const formatDateTime = (dateString) => {
+  const date = new Date(dateString);
+  return date.toLocaleString();
+}
+
+const { tState, getSpecificTask, editTaskState } = task()
+
+onMounted(() => {
+    getSpecificTask()
+})
+
 
 
 </script>
@@ -27,6 +54,14 @@ import router from '../router';
     padding: 0;
     border: 2px solid black;
     box-shadow: 6px 6px 0px 2px rgba(0,0,0,0.5);
+}
+
+.edit-btn {
+    background-color: #54B9AD;
+    color: white;
+    padding: 1rem 2rem;
+    width: 30%;
+    border: 2px solid black;
 }
 
 .title {
@@ -68,7 +103,7 @@ a {
     font-size: 1rem;
 }
 
-button {
+.close {
     position: fixed;
     z-index: 4;
     background-color: #DADAD3;

@@ -6,7 +6,7 @@
         </div>
         <div class="folder-body">
             <input type="text" placeholder="Task title" v-model="tState.title">
-            <input type="text" placeholder="Task details" v-model="tState.details">
+            <input type="text" placeholder="Task details" v-model="tState.detail">
             <button class="create-btn" @click="newTask()">Create</button>
         </div>
     </div>

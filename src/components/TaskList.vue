@@ -15,7 +15,7 @@
             </ul>
             <ul v-for="task in tState.tasks" :key="task._id">
                 <li>
-                    <RouterLink :to="`/task/${task._id}`">
+                    <RouterLink :to="`/task/${id}/${task._id}`">
                         <img src="../assets/icon-folder.svg" alt="">
                         <h3>{{ task.title }}</h3>
                     </RouterLink>

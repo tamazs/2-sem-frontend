@@ -112,7 +112,6 @@ const getProject = () => {
           )
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
               pState.members = data.member
             });
         } catch (error) {
