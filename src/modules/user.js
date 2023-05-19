@@ -57,12 +57,73 @@ const getUser = () => {
         
     }
 
+    const editPass = async () => {
+        const requestOptions = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "auth-token": localStorage.getItem("auth-token")
+            },
+            body: JSON.stringify({ 
+                password: uState.password
+            })
+        };
+       
+        try {
+            const response = await fetch(
+                "http://localhost:4000/api/user/updatePass/" + localStorage.getItem("userID"),
+                requestOptions
+              );
+          
+              if (!response.ok) {
+                throw new Error("Failed to update user profile");
+              }
+              router.push('/' + localStorage.getItem("userID"))
+        }
+        catch(error) {
+            console.error(error);
+        }
+    };
+
+    const editUser = async () => {
+        const requestOptions = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "auth-token": localStorage.getItem("auth-token")
+            },
+            body: JSON.stringify({ 
+                name: uState.name,
+                email: uState.email
+            })
+        };
+       
+        try {
+            const response = await fetch(
+                "http://localhost:4000/api/user/" + localStorage.getItem("userID"),
+                requestOptions
+              );
+          
+              if (!response.ok) {
+                throw new Error("Failed to update user profile");
+              }
+          
+              const data = await response.json();
+              localStorage.setItem("userName", data.name);
+              localStorage.setItem("email", data.email);
+              router.push('/' + localStorage.getItem("userID"));
+        }
+        catch(error) {
+            console.error(error);
+        }
+    };
+
     const logOut = () => {
         localStorage.clear();
         router.push("/login");
     }
 
-    return { uState, loginUser, logOut, newUser}
+    return { uState, loginUser, logOut, newUser, editUser, editPass}
 }
 
 export default getUser

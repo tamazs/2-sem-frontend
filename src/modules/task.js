@@ -7,7 +7,7 @@ const getTask = () => {
     const router = useRouter();
 
     const projectId = computed(() => route.params.id)
-    const state = computed(() => route.params.state)
+    const state = route.params.state
 
     const tState = reactive({
         title: '',
@@ -53,8 +53,8 @@ const getTask = () => {
             })
         };
        
-        fetch("http://localhost:4000/api/tasks/new/" + projectId, requestOptions)
-        .then(router.push('/tasks/' + projectId + "/ToDo"))
+        fetch("http://localhost:4000/api/tasks/new/", requestOptions)
+        .then(router.push('/' + projectId))
     };
 
     return { tState, getTasks, newTask }

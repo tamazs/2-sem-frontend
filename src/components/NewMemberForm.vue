@@ -2,11 +2,11 @@
     <div class="list-body">
         <div class="task-top">
             <button class="close-button" @click="router.go(-1)"><h2 class="close-btn">X</h2></button>
-            <h2 class="title">Create project</h2>
+            <h2 class="title">Add member</h2>
         </div>
         <div class="folder-body">
-            <input type="text" placeholder="Project title">
-            <button class="create-btn">Create</button>
+            <input type="text" placeholder="Add member" v-model="pState.members">
+            <button class="create-btn" @click="addMemberProject()">Add member</button>
         </div>
     </div>
 </template>
@@ -14,6 +14,9 @@
 <script setup>
 import router from '../router';
 
+import project from '../modules/project';
+
+const { pState, addMemberProject} = project()
 </script>
 
 <style scoped>

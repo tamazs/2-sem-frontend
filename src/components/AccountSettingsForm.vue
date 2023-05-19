@@ -5,16 +5,20 @@
             <h2 class="title">Update account</h2>
         </div>
         <div class="folder-body">
-            <input type="text" placeholder="Name">
-            <input type="text" placeholder="Email">
-            <button class="edit-btn">Edit account</button>
+            <input type="text" placeholder="Name" v-model="uState.name">
+            <input type="text" placeholder="Email" v-model="uState.email">
+            <button class="edit-btn" @click="editUser()">Edit account</button>
+            <input type="password" placeholder="Password" style="margin-top: 2rem;" v-model="uState.password">
+            <button class="edit-btn" style="margin-top: 2rem;" @click="editPass()">Edit password</button>
         </div>
     </div>
 </template>
 
 <script setup>
 import router from '../router';
+import user from '../modules/user';
 
+const { uState, editUser, editPass} = user()
 </script>
 
 <style scoped>
