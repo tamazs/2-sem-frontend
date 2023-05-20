@@ -7,7 +7,7 @@
         <div class="folder-body">
             <input type="text" placeholder="Title" v-model="tState.title">
             <input type="text" placeholder="Details" v-model="tState.detail">
-            <input type="text" placeholder="Assigned To" v-model="tState.assignedTo">
+            <input type="text" placeholder="Assign to member by email" v-model="tState.assignedTo">
             <button class="edit-btn" @click="editTask()">Edit task</button>
             <button class="edit-btn" style="margin-top: 2rem;" @click="deleteTask()">Delete task</button>
         </div>

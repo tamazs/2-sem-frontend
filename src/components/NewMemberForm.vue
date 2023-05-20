@@ -5,7 +5,7 @@
             <h2 class="title">Add member</h2>
         </div>
         <div class="folder-body">
-            <input type="text" placeholder="Add member" v-model="pState.members">
+            <input type="text" placeholder="Add member by email" v-model="pState.members">
             <button class="create-btn" @click="addMemberProject()">Add member</button>
         </div>
     </div>

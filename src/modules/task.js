@@ -14,6 +14,7 @@ const getTask = () => {
         title: '',
         detail: '',
         assignedTo: '',
+        assignedToEmail: '',
         projectID: '',
         tasks: ''
     })
@@ -46,16 +47,18 @@ const getTask = () => {
                 "Content-Type": "application/json",
                 "auth-token": localStorage.getItem("auth-token")
             },
-            body: JSON.stringify({ 
+            body: JSON.stringify({
                 title: tState.title,
                 detail: tState.detail,
-                assignedTo: localStorage.getItem("userID"),
+                assignedTo: tState.assignedToEmail,
                 projectID: projectId.value
             })
         };
-       
+    
+        console.log(tState.assignedToEmail)
+        console.log(projectId.value)
         fetch("http://localhost:4000/api/tasks/new", requestOptions)
-        .then(router.push('/' + projectId))
+            .then(router.push('/project/' + projectId.value))
     };
 
     const getSpecificTask = async () => {
@@ -71,7 +74,7 @@ const getTask = () => {
             fetch("http://localhost:4000/api/tasks/get/" + projectId.value + "/" + taskId.value, requestOptions)
             .then(res => res.json())
             .then(data => {
-                tState.tasks = data
+                tState.tasks = data;
             })
         }
         catch(error) {
@@ -88,7 +91,7 @@ const getTask = () => {
             }
         };
        
-        fetch("http://localhost:4000/api/tasks//updateState/" + projectId.value + "/" + taskId + "/" + state, requestOptions)
+        fetch("http://localhost:4000/api/tasks/updateState/" + projectId.value + "/" + taskId + "/" + state, requestOptions)
         .then(router.push('/project/' + projectId.value))
     };
 

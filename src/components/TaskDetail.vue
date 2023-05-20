@@ -7,7 +7,7 @@
         <div class="folder-body">
             <p><b>Title:</b> {{ tState.tasks.title }}</p>
             <p><b>Details:</b> {{ tState.tasks.detail }}</p>
-            <p><b>Assigned to:</b> {{ tState.tasks.assignedTo }}</p>
+            <p><b>Assigned to:</b> {{ tState.tasks.assignedToEmail }}</p>
             <p><b>State:</b> {{ tState.tasks.state }}</p>
             <p><b>Created at:</b> {{ formatDateTime(tState.tasks.createdDate) }}</p>
             <button v-if="tState.tasks.state != 'ToDo'" class="edit-btn" style="margin-top: 2rem;" @click="editTaskState(tState.tasks._id, states[0])">Move to ToDo</button>

@@ -136,6 +136,8 @@ const getProject = () => {
     };
 
     const addMemberProject = async () => {
+        const memberEmail = pState.members;
+    
         const requestOptions = {
             method: "PUT",
             headers: {
@@ -143,12 +145,22 @@ const getProject = () => {
                 "auth-token": localStorage.getItem("auth-token")
             },
             body: JSON.stringify({ 
-                members: pState.members
+                memberEmail: memberEmail
             })
         };
+    
         fetch("http://localhost:4000/api/projects/add-member/" + projectId.value, requestOptions)
-        .then(router.push('/members/' + projectId.value))
-        getMembers();
+            .then(response => {
+                if (response.ok) {
+                    router.push('/members/' + projectId.value);
+                    getMembers();
+                } else {
+                    throw new Error('Failed to add member to the project');
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            });
     };
 
     const deleteProject = () => {
