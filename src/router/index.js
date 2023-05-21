@@ -18,6 +18,14 @@ import { createRouter, createWebHistory } from 'vue-router'
       }
     },
     {
+      path: '/mytasks/:id/user/:userId',
+      name: 'mytasklist',
+      component: () => import('../views/MyTasksListView.vue'),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: '/tasks/:id/:state',
       name: 'tasklist',
       component: () => import('../views/TaskList.vue'),

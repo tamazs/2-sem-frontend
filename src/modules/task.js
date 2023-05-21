@@ -40,6 +40,27 @@ const getTask = () => {
         }
     };
 
+    const getUserTasks = async () => {
+        const requestOptions = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "auth-token": localStorage.getItem("auth-token")
+            }
+        };
+
+        try {
+            fetch("http://localhost:4000/api/tasks/" + projectId.value + "/user/" + localStorage.getItem("userID"), requestOptions)
+            .then(res => res.json())
+            .then(data => {
+                tState.tasks = data
+            })
+        }
+        catch(error) {
+            console.log(error)
+        }
+    };
+
     const newTask = () => {
         const requestOptions = {
             method: "POST",
@@ -126,7 +147,7 @@ const getTask = () => {
         .then(router.push('/project/' + projectId.value))
     };
 
-    return { tState, getTasks, newTask, getSpecificTask, editTaskState, editTask, deleteTask }
+    return { tState, getTasks, getUserTasks, newTask, getSpecificTask, editTaskState, editTask, deleteTask }
 }
 
 export default getTask

@@ -19,6 +19,12 @@
                     <h2>Done</h2>
                 </RouterLink>
             </li>
+            <li>
+                <RouterLink :to="`/mytasks/${id}/user/${userId}`">
+                    <img src="../assets/icon-folder.svg" alt="">
+                    <h2>My Tasks</h2>
+                </RouterLink>
+            </li>
         </ul>
     </section>
 </template>
@@ -28,6 +34,7 @@ import { useRoute } from 'vue-router';
 
 const route = useRoute();
 
+const userId = localStorage.getItem("userID")
 const id = route.params.id;
 const states = ["ToDo", "Doing", "Done"]
 
