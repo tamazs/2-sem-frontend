@@ -25,12 +25,16 @@ const getProject = () => {
 
         try {
             fetch("http://localhost:4000/api/projects/" + localStorage.getItem("userID"), requestOptions)
-            .then(res => res.json())
-            .then(data => {
-                pState.projects = data
-            })
+                .then(res => res.json())
+                .then(data => {
+                    pState.projects = data
+                })
+                .catch(error => {
+                    alert("An error occurred while fetching user projects.");
+                    console.error("An error occurred:", error);
+                });
         }
-        catch(error) {
+        catch (error) {
             console.log(error)
         }
     };
@@ -42,15 +46,19 @@ const getProject = () => {
                 "Content-Type": "application/json",
                 "auth-token": localStorage.getItem("auth-token")
             },
-            body: JSON.stringify({ 
+            body: JSON.stringify({
                 title: pState.title,
                 ownerID: localStorage.getItem("userID"),
                 members: localStorage.getItem("userID")
             })
         };
-       
+
         fetch("http://localhost:4000/api/projects/new", requestOptions)
-        .then(router.push('/' + localStorage.getItem("userID")))
+            .then(router.push('/' + localStorage.getItem("userID")))
+            .catch(error => {
+                alert("An error occurred while creating a new project.");
+                console.error("An error occurred:", error);
+            });
     };
 
     const getSpecificProject = async () => {
@@ -64,12 +72,16 @@ const getProject = () => {
 
         try {
             fetch("http://localhost:4000/api/projects/get/" + projectId.value, requestOptions)
-            .then(res => res.json())
-            .then(data => {
-                pState.projects = data
-            })
+                .then(res => res.json())
+                .then(data => {
+                    pState.projects = data
+                })
+                .catch(error => {
+                    alert("An error occurred while fetching the project.");
+                    console.error("An error occurred:", error);
+                });
         }
-        catch(error) {
+        catch (error) {
             console.log(error)
         }
     };
@@ -85,39 +97,47 @@ const getProject = () => {
 
         try {
             fetch("http://localhost:4000/api/projects/members/" + projectId.value, requestOptions)
-            .then(res => res.json())
-            .then(data => {
-                pState.members = data.members
-            })
+                .then(res => res.json())
+                .then(data => {
+                    pState.members = data.members
+                })
+                .catch(error => {
+                    alert("An error occurred while fetching project members.");
+                    console.error("An error occurred:", error);
+                });
         }
-        catch(error) {
+        catch (error) {
             console.log(error)
         }
     };
 
     const getMemberDetails = async () => {
         const requestOptions = {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "auth-token": localStorage.getItem("auth-token")
-          }
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "auth-token": localStorage.getItem("auth-token")
+            }
         };
-      
+
         try {
             const memberId = route.params.memberId;
-          fetch(
-            "http://localhost:4000/api/projects/members/" + projectId.value + "/" + memberId,
-            requestOptions
-          )
-            .then((res) => res.json())
-            .then((data) => {
-              pState.members = data.member
-            });
+            fetch(
+                "http://localhost:4000/api/projects/members/" + projectId.value + "/" + memberId,
+                requestOptions
+            )
+                .then((res) => res.json())
+                .then((data) => {
+                    pState.members = data.member
+                })
+                .catch(error => {
+                    alert("An error occurred while fetching member details.");
+                    console.error("An error occurred:", error);
+                });
         } catch (error) {
-          console.log(error);
+            console.log(error);
         }
-      };
+    };
 
     const editProject = () => {
         const requestOptions = {
@@ -126,40 +146,45 @@ const getProject = () => {
                 "Content-Type": "application/json",
                 "auth-token": localStorage.getItem("auth-token")
             },
-            body: JSON.stringify({ 
+            body: JSON.stringify({
                 title: pState.title
             })
         };
-       
+
         fetch("http://localhost:4000/api/projects/update/" + projectId.value, requestOptions)
-        .then(router.push('/project/' + projectId.value))
+            .then(router.push('/project/' + projectId.value))
+            .catch(error => {
+                alert("An error occurred while updating the project.");
+                console.error("An error occurred:", error);
+            });
     };
 
     const addMemberProject = async () => {
         const memberEmail = pState.members;
-    
+
         const requestOptions = {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
                 "auth-token": localStorage.getItem("auth-token")
             },
-            body: JSON.stringify({ 
+            body: JSON.stringify({
                 memberEmail: memberEmail
             })
         };
-    
+
         fetch("http://localhost:4000/api/projects/add-member/" + projectId.value, requestOptions)
             .then(response => {
                 if (response.ok) {
                     router.push('/members/' + projectId.value);
                     getMembers();
                 } else {
-                    throw new Error('Failed to add member to the project');
+                    alert('Failed to add member to the project');
                 }
             })
             .catch(error => {
-                console.log(error);
+                alert("An error occurred while adding a member to the project.");
+                console.error("An error occurred:", error);
             });
     };
 
@@ -171,34 +196,51 @@ const getProject = () => {
                 "auth-token": localStorage.getItem("auth-token")
             }
         };
-       
+
         fetch("http://localhost:4000/api/projects/delete/" + projectId.value, requestOptions)
-        .then(router.push('/' + localStorage.getItem("userID")))
+            .then(router.push('/' + localStorage.getItem("userID")))
+            .catch(error => {
+                alert("An error occurred while deleting the project.");
+                console.error("An error occurred:", error);
+            });
     };
 
     const deleteMember = async () => {
         const requestOptions = {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            "auth-token": localStorage.getItem("auth-token"),
-          },
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "auth-token": localStorage.getItem("auth-token"),
+            },
         };
-      
+
         try {
             const memberId = route.params.memberId;
-          await fetch(
-            "http://localhost:4000/api/projects/delete-member/" + projectId.value + "/" + memberId,
-            requestOptions
-          )
-          .then(router.push('/members/' + projectId.value))
-          getMembers();
+            await fetch(
+                "http://localhost:4000/api/projects/delete-member/" + projectId.value + "/" + memberId,
+                requestOptions
+            )
+                .then(router.push('/members/' + projectId.value))
+                getMembers();
         } catch (error) {
-          console.log(error);
+            console.log(error);
+            alert("An error occurred while deleting the member.");
+            console.error("An error occurred:", error);
         }
-      };
+    };
 
-    return { pState, getUserProjects, newProject, getSpecificProject, editProject, addMemberProject, deleteProject, getMembers, getMemberDetails, deleteMember}
+    return {
+        pState,
+        getUserProjects,
+        newProject,
+        getSpecificProject,
+        editProject,
+        addMemberProject,
+        deleteProject,
+        getMembers,
+        getMemberDetails,
+        deleteMember
+    }
 }
 
-export default getProject
+export default getProject;

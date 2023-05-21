@@ -23,10 +23,24 @@ const getUser = () => {
                 password: uState.password 
             })
         };
-       
+
         fetch("http://localhost:4000/api/user/register", requestOptions)
-        .then(router.push('/login'))
-    }
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    // Display the error message to the user
+                    alert(data.message);
+                } else {
+                    // User creation successful, redirect to the login page
+                    router.push('/login');
+                }
+            })
+            .catch(error => {
+                console.error("An error occurred:", error);
+                // Handle any other network or runtime errors
+            });
+    };
+
 
     const loginUser = async () => {
         try {
@@ -50,6 +64,11 @@ const getUser = () => {
                 localStorage.setItem("userType", data.data.userType)
             })
             .then(router.push('/' + localStorage.getItem("userID")))
+            .catch(error => {
+                alert("An error occurred during login.");
+                console.error("An error occurred:", error);
+                // Handle any other network or runtime errors
+            });
         }
         catch(error) {
             console.log(error)
@@ -76,12 +95,16 @@ const getUser = () => {
               );
           
               if (!response.ok) {
-                throw new Error("Failed to update user profile");
+                const errorData = await response.json();
+                const errorMessage = errorData.message;
+                alert(errorMessage);
+              } else {
+                router.push('/' + localStorage.getItem("userID"))
               }
-              router.push('/' + localStorage.getItem("userID"))
         }
         catch(error) {
             console.error(error);
+            alert("An error occurred while updating the password.");
         }
     };
 
@@ -105,16 +128,19 @@ const getUser = () => {
               );
           
               if (!response.ok) {
-                throw new Error("Failed to update user profile");
+                const errorData = await response.json();
+                const errorMessage = errorData.message;
+                alert(errorMessage);
+              } else {
+                const data = await response.json();
+                localStorage.setItem("userName", data.name);
+                localStorage.setItem("email", data.email);
+                router.push('/' + localStorage.getItem("userID"));
               }
-          
-              const data = await response.json();
-              localStorage.setItem("userName", data.name);
-              localStorage.setItem("email", data.email);
-              router.push('/' + localStorage.getItem("userID"));
         }
         catch(error) {
             console.error(error);
+            alert("An error occurred while updating the user.");
         }
     };
 

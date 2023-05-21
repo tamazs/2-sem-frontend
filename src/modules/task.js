@@ -30,12 +30,16 @@ const getTask = () => {
 
         try {
             fetch("http://localhost:4000/api/tasks/" + projectId.value + "/" + state, requestOptions)
-            .then(res => res.json())
-            .then(data => {
-                tState.tasks = data
-            })
+                .then(res => res.json())
+                .then(data => {
+                    tState.tasks = data
+                })
+                .catch(error => {
+                    alert("An error occurred while fetching tasks.");
+                    console.error("An error occurred:", error);
+                });
         }
-        catch(error) {
+        catch (error) {
             console.log(error)
         }
     };
@@ -51,12 +55,16 @@ const getTask = () => {
 
         try {
             fetch("http://localhost:4000/api/tasks/" + projectId.value + "/user/" + localStorage.getItem("userID"), requestOptions)
-            .then(res => res.json())
-            .then(data => {
-                tState.tasks = data
-            })
+                .then(res => res.json())
+                .then(data => {
+                    tState.tasks = data
+                })
+                .catch(error => {
+                    alert("An error occurred while fetching user tasks.");
+                    console.error("An error occurred:", error);
+                });
         }
-        catch(error) {
+        catch (error) {
             console.log(error)
         }
     };
@@ -75,12 +83,22 @@ const getTask = () => {
                 projectID: projectId.value
             })
         };
-    
-        console.log(tState.assignedToEmail)
-        console.log(projectId.value)
+
         fetch("http://localhost:4000/api/tasks/new", requestOptions)
-            .then(router.push('/project/' + projectId.value))
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    alert(data.message);
+                } else {
+                    router.push('/project/' + projectId.value);
+                }
+            })
+            .catch(error => {
+                alert("An error occurred while creating a new task.");
+                console.error("An error occurred:", error);
+            });
     };
+
 
     const getSpecificTask = async () => {
         const requestOptions = {
@@ -93,12 +111,16 @@ const getTask = () => {
 
         try {
             fetch("http://localhost:4000/api/tasks/get/" + projectId.value + "/" + taskId.value, requestOptions)
-            .then(res => res.json())
-            .then(data => {
-                tState.tasks = data;
-            })
+                .then(res => res.json())
+                .then(data => {
+                    tState.tasks = data;
+                })
+                .catch(error => {
+                    alert("An error occurred while fetching the task.");
+                    console.error("An error occurred:", error);
+                });
         }
-        catch(error) {
+        catch (error) {
             console.log(error)
         }
     };
@@ -111,9 +133,13 @@ const getTask = () => {
                 "auth-token": localStorage.getItem("auth-token")
             }
         };
-       
+
         fetch("http://localhost:4000/api/tasks/updateState/" + projectId.value + "/" + taskId + "/" + state, requestOptions)
-        .then(router.push('/project/' + projectId.value))
+            .then(router.push('/project/' + projectId.value))
+            .catch(error => {
+                alert("An error occurred while updating the task state.");
+                console.error("An error occurred:", error);
+            });
     };
 
     const editTask = () => {
@@ -123,15 +149,19 @@ const getTask = () => {
                 "Content-Type": "application/json",
                 "auth-token": localStorage.getItem("auth-token")
             },
-            body: JSON.stringify({ 
+            body: JSON.stringify({
                 title: tState.title,
                 detail: tState.detail,
                 assignedTo: tState.assignedTo
             })
         };
-       
+
         fetch("http://localhost:4000/api/tasks/update/" + taskId.value, requestOptions)
-        .then(router.push('/project/' + projectId.value))
+            .then(router.push('/project/' + projectId.value))
+            .catch(error => {
+                alert("An error occurred while updating the task.");
+                console.error("An error occurred:", error);
+            });
     };
 
     const deleteTask = () => {
@@ -142,9 +172,13 @@ const getTask = () => {
                 "auth-token": localStorage.getItem("auth-token")
             }
         };
-       
+
         fetch("http://localhost:4000/api/tasks/delete/" + taskId.value, requestOptions)
-        .then(router.push('/project/' + projectId.value))
+            .then(router.push('/project/' + projectId.value))
+            .catch(error => {
+                alert("An error occurred while deleting the task.");
+                console.error("An error occurred:", error);
+            });
     };
 
     return { tState, getTasks, getUserTasks, newTask, getSpecificTask, editTaskState, editTask, deleteTask }
