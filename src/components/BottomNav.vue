@@ -47,7 +47,7 @@
                 </RouterLink>
             </li>
             <li>
-                <div @click="deleteProject()">
+                <div @click="deleteProject()" class="delete">
                     <img src="../assets/icon-bin.svg" alt="Bin icon">
                     <h3 class="bottom-nav-tooltip">
                         <span class="tooltip-arrow"></span>
@@ -151,5 +151,10 @@ img {
 a {
     text-decoration: none;
     color: black;
+}
+
+.delete {
+    cursor: pointer;
+    cursor: url(../assets/cursor-pointer.png), pointer;
 }
 </style>
