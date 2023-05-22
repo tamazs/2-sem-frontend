@@ -75,6 +75,12 @@ const getProject = () => {
                 .then(res => res.json())
                 .then(data => {
                     pState.projects = data
+
+                    if (pState.projects.ownerID === localStorage.getItem("userID")) {
+                        localStorage.setItem("userType", "Owner");
+                    } else {
+                        localStorage.setItem("userType", "User");
+                      }
                 })
                 .catch(error => {
                     alert("An error occurred while fetching the project.");

@@ -5,7 +5,7 @@
             <h2 class="title">Tasks</h2>
         </div>
         <div class="folder-body">
-            <ul class="newlist">
+            <ul v-if="userType === 'Owner'" class="newlist">
                 <li>
                     <RouterLink :to="`/addmember/${id}`">
                         <img src="../assets/icon-about.svg" alt="">
@@ -30,6 +30,8 @@ import router from '../router';
 import { useRoute } from 'vue-router';
 import project from '../modules/project';
 import { onMounted } from 'vue';
+
+const userType = localStorage.getItem('userType');
 
 const { pState, getMembers } = project()
 

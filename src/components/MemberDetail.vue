@@ -7,7 +7,7 @@
         <div class="folder-body">
             <p><b>Name:</b> {{ pState.members.name }}</p>
             <p><b>Email:</b> {{ pState.members.email }}</p>
-            <button class="create-btn" @click="deleteMember(pState.members._id)">Delete member</button>
+            <button v-if="userType === 'Owner' || userID === pState.members._id" class="create-btn" @click="deleteMember(pState.members._id)">Delete member</button>
         </div>
     </div>
 </template>
@@ -16,6 +16,9 @@
 import router from '../router';
 import project from '../modules/project';
 import { onMounted } from 'vue';
+
+const userType = localStorage.getItem('userType');
+const userID = localStorage.getItem('userID');
 
 const { pState, getMemberDetails, deleteMember } = project()
 
