@@ -133,6 +133,10 @@ import { createRouter, createWebHistory } from 'vue-router'
       if ( !isAuthenticated && requiresAuth) {
         next('/login')
       }
+      else if ((isAuthenticated && to.path === '/login') || (isAuthenticated && to.path === '/register')) {
+        // User is already logged in, redirect to project page
+        next('/' + localStorage.getItem("userID"));
+      }
       else {
         next()
       }
