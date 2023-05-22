@@ -195,21 +195,25 @@ const getProject = () => {
     };
 
     const deleteProject = () => {
-        const requestOptions = {
+        if (localStorage.getItem("userType") === "Owner") {
+          const requestOptions = {
             method: "DELETE",
             headers: {
-                "Content-Type": "application/json",
-                "auth-token": localStorage.getItem("auth-token")
+              "Content-Type": "application/json",
+              "auth-token": localStorage.getItem("auth-token")
             }
-        };
-
-        fetch("https://men-restful-api.onrender.com/api/projects/delete/" + projectId.value, requestOptions)
-            .then(router.push('/' + localStorage.getItem("userID")))
+          };
+      
+          fetch("https://men-restful-api.onrender.com/api/projects/delete/" + projectId.value, requestOptions)
+            .then(() => router.push('/' + localStorage.getItem("userID")))
             .catch(error => {
-                alert("An error occurred while deleting the project.");
-                console.error("An error occurred:", error);
+              alert("An error occurred while deleting the project.");
+              console.error("An error occurred:", error);
             });
-    };
+        } else {
+          alert("You can't do that mate!🤠");
+        }
+      };      
 
     const deleteMember = async () => {
         const requestOptions = {
