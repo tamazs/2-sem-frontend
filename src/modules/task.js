@@ -29,7 +29,7 @@ const getTask = () => {
         };
 
         try {
-            fetch("http://localhost:4000/api/tasks/" + projectId.value + "/" + state, requestOptions)
+            fetch("https://men-restful-api.onrender.com/api/tasks/" + projectId.value + "/" + state, requestOptions)
                 .then(res => res.json())
                 .then(data => {
                     tState.tasks = data
@@ -54,7 +54,7 @@ const getTask = () => {
         };
 
         try {
-            fetch("http://localhost:4000/api/tasks/" + projectId.value + "/user/" + localStorage.getItem("userID"), requestOptions)
+            fetch("https://men-restful-api.onrender.com/api/tasks/" + projectId.value + "/user/" + localStorage.getItem("userID"), requestOptions)
                 .then(res => res.json())
                 .then(data => {
                     tState.tasks = data
@@ -84,7 +84,7 @@ const getTask = () => {
             })
         };
 
-        fetch("http://localhost:4000/api/tasks/new", requestOptions)
+        fetch("https://men-restful-api.onrender.com/api/tasks/new", requestOptions)
             .then(response => response.json())
             .then(data => {
                 if (data.message) {
@@ -110,7 +110,7 @@ const getTask = () => {
         };
 
         try {
-            fetch("http://localhost:4000/api/tasks/get/" + projectId.value + "/" + taskId.value, requestOptions)
+            fetch("https://men-restful-api.onrender.com/api/tasks/get/" + projectId.value + "/" + taskId.value, requestOptions)
                 .then(res => res.json())
                 .then(data => {
                     tState.tasks = data;
@@ -134,7 +134,7 @@ const getTask = () => {
             }
         };
 
-        fetch("http://localhost:4000/api/tasks/updateState/" + projectId.value + "/" + taskId + "/" + state, requestOptions)
+        fetch("https://men-restful-api.onrender.com/api/tasks/updateState/" + projectId.value + "/" + taskId + "/" + state, requestOptions)
             .then(router.push('/project/' + projectId.value))
             .catch(error => {
                 alert("An error occurred while updating the task state.");
@@ -156,7 +156,7 @@ const getTask = () => {
             })
         };
 
-        fetch("http://localhost:4000/api/tasks/update/" + taskId.value, requestOptions)
+        fetch("https://men-restful-api.onrender.com/api/tasks/update/" + taskId.value, requestOptions)
             .then(router.push('/project/' + projectId.value))
             .catch(error => {
                 alert("An error occurred while updating the task.");
@@ -173,7 +173,7 @@ const getTask = () => {
             }
         };
 
-        fetch("http://localhost:4000/api/tasks/delete/" + taskId.value, requestOptions)
+        fetch("https://men-restful-api.onrender.com/api/tasks/delete/" + taskId.value, requestOptions)
             .then(router.push('/project/' + projectId.value))
             .catch(error => {
                 alert("An error occurred while deleting the task.");

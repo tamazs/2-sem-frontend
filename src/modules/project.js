@@ -24,7 +24,7 @@ const getProject = () => {
         };
 
         try {
-            fetch("http://localhost:4000/api/projects/" + localStorage.getItem("userID"), requestOptions)
+            fetch("https://men-restful-api.onrender.com/api/projects/" + localStorage.getItem("userID"), requestOptions)
                 .then(res => res.json())
                 .then(data => {
                     pState.projects = data
@@ -53,7 +53,7 @@ const getProject = () => {
             })
         };
 
-        fetch("http://localhost:4000/api/projects/new", requestOptions)
+        fetch("https://men-restful-api.onrender.com/api/projects/new", requestOptions)
             .then(router.push('/' + localStorage.getItem("userID")))
             .catch(error => {
                 alert("An error occurred while creating a new project.");
@@ -71,7 +71,7 @@ const getProject = () => {
         };
 
         try {
-            fetch("http://localhost:4000/api/projects/get/" + projectId.value, requestOptions)
+            fetch("https://men-restful-api.onrender.com/api/projects/get/" + projectId.value, requestOptions)
                 .then(res => res.json())
                 .then(data => {
                     pState.projects = data
@@ -96,7 +96,7 @@ const getProject = () => {
         };
 
         try {
-            fetch("http://localhost:4000/api/projects/members/" + projectId.value, requestOptions)
+            fetch("https://men-restful-api.onrender.com/api/projects/members/" + projectId.value, requestOptions)
                 .then(res => res.json())
                 .then(data => {
                     pState.members = data.members
@@ -123,7 +123,7 @@ const getProject = () => {
         try {
             const memberId = route.params.memberId;
             fetch(
-                "http://localhost:4000/api/projects/members/" + projectId.value + "/" + memberId,
+                "https://men-restful-api.onrender.com/api/projects/members/" + projectId.value + "/" + memberId,
                 requestOptions
             )
                 .then((res) => res.json())
@@ -151,7 +151,7 @@ const getProject = () => {
             })
         };
 
-        fetch("http://localhost:4000/api/projects/update/" + projectId.value, requestOptions)
+        fetch("https://men-restful-api.onrender.com/api/projects/update/" + projectId.value, requestOptions)
             .then(router.push('/project/' + projectId.value))
             .catch(error => {
                 alert("An error occurred while updating the project.");
@@ -173,7 +173,7 @@ const getProject = () => {
             })
         };
 
-        fetch("http://localhost:4000/api/projects/add-member/" + projectId.value, requestOptions)
+        fetch("https://men-restful-api.onrender.com/api/projects/add-member/" + projectId.value, requestOptions)
             .then(response => {
                 if (response.ok) {
                     router.push('/members/' + projectId.value);
@@ -197,7 +197,7 @@ const getProject = () => {
             }
         };
 
-        fetch("http://localhost:4000/api/projects/delete/" + projectId.value, requestOptions)
+        fetch("https://men-restful-api.onrender.com/api/projects/delete/" + projectId.value, requestOptions)
             .then(router.push('/' + localStorage.getItem("userID")))
             .catch(error => {
                 alert("An error occurred while deleting the project.");
@@ -217,7 +217,7 @@ const getProject = () => {
         try {
             const memberId = route.params.memberId;
             await fetch(
-                "http://localhost:4000/api/projects/delete-member/" + projectId.value + "/" + memberId,
+                "https://men-restful-api.onrender.com/api/projects/delete-member/" + projectId.value + "/" + memberId,
                 requestOptions
             )
                 .then(router.push('/members/' + projectId.value))

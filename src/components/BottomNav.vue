@@ -84,7 +84,7 @@ const { deleteProject } = project()
     background-position: top;
     border-radius: 8px 8px 0 0;
     transform: translateX(-50%) scale(0.8);
-    z-index: 3;
+    z-index: 10;
 }
 
 ul {

@@ -24,7 +24,7 @@ const getUser = () => {
             })
         };
 
-        fetch("http://localhost:4000/api/user/register", requestOptions)
+        fetch("https://men-restful-api.onrender.com/api/user/register", requestOptions)
             .then(response => response.json())
             .then(data => {
                 if (data.message) {
@@ -54,7 +54,7 @@ const getUser = () => {
                     password: uState.password 
                 })
             };
-            await fetch("http://localhost:4000/api/user/login", requestOptions)
+            await fetch("https://men-restful-api.onrender.com/api/user/login", requestOptions)
             .then(res => res.json())
             .then(data => {
                 localStorage.setItem("auth-token", data.data.token),
@@ -90,7 +90,7 @@ const getUser = () => {
        
         try {
             const response = await fetch(
-                "http://localhost:4000/api/user/updatePass/" + localStorage.getItem("userID"),
+                "https://men-restful-api.onrender.com/api/user/updatePass/" + localStorage.getItem("userID"),
                 requestOptions
               );
           
@@ -123,7 +123,7 @@ const getUser = () => {
        
         try {
             const response = await fetch(
-                "http://localhost:4000/api/user/" + localStorage.getItem("userID"),
+                "https://men-restful-api.onrender.com/api/user/" + localStorage.getItem("userID"),
                 requestOptions
               );
           
