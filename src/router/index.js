@@ -10,6 +10,10 @@ import { createRouter, createWebHistory } from 'vue-router'
       }
     },
     {
+      path: '/',
+      redirect: '/register'
+    },
+    {
       path: '/:id',
       name: 'projectlist',
       component: () => import('../views/ProjectList.vue'),
